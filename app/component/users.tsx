@@ -27,6 +27,7 @@ const Users: React.FC = () => {
     const data = await getDocs(usersCollectionRef);
     setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })) as User[]);
   };
+  
 
   const handleCreateUsers = async (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
@@ -73,7 +74,7 @@ const Users: React.FC = () => {
 
   useEffect(() => {
     getUsers();
-  }, []);
+  }, [getUsers]);
 
   return (
     <div className="p-6 xl:w-[700px] m-auto">
